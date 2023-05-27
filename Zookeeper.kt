@@ -1,3 +1,5 @@
+import kotlin.system.exitProcess
+
 const val camel = """Switching on the camera in the camel habitat...
  ___.-''''-.
 /___  @    |
@@ -113,20 +115,24 @@ const val rabbit = """Switching on the camera in the rabbit habitat...
 (" ~----( ~   Y.  )
 It looks like we will soon have more rabbits!"""
 
+val animals = arrayOf(camel, lion, deer, goose, bat, rabbit)
+
 fun main() {
-    print("Please enter the number of the habitat you would like to view: ")
-    println(
-        when (readln().toInt()) {
-            0 -> camel
-            1 -> lion
-            2 -> deer
-            3 -> goose
-            4 -> bat
-            5 -> rabbit
-            else -> ""
-        }
-    )
-    println("---")
-    println("You've reached the end of the program. To check another habitat, please restart the watcher.")
-    // write your code here
+    while (true) {
+        println("Please enter the number of the habitat you would like to view: ")
+        println(
+            when (readln()) {
+                "0" -> animals[0]
+                "1" -> animals[1]
+                "2" -> animals[2]
+                "3" -> animals[3]
+                "4" -> animals[4]
+                "5" -> animals[5]
+                else -> {
+                    println("See you later!")
+                    exitProcess(0)
+                }
+            }
+        )
+    }
 }
